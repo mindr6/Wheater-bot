@@ -15,10 +15,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # API ключи (рекомендую вынести в переменные окружения!)
-API_KEY = 'db3f8348e32ed4615e90b1728224142d'
-BOT_TOKEN = '7718519419:AAGs8hKv5eiXfPSRsYn5JcsmAPb7F9C-JD8'
+API_KEY = 'ваш_api_от_openweather'
+BOT_TOKEN = 'ващ_токен_телеграм_бота'
 
-# Словарь для перевода описания погоды на русский язык
+# Словарь
 weather_descriptions = {
     'clear sky': 'ясное небо',
     'few clouds': 'небольшая облачность',
@@ -39,7 +39,7 @@ weather_descriptions = {
     'drizzle': 'морось'
 }
 
-# Советы по одежде в зависимости от погоды
+# Советы по одежде
 clothing_advice = {
     'ясное небо': 'Сегодня ясно! Наденьте легкую одежду и солнцезащитные очки. ☀️',
     'небольшая облачность': 'Небольшая облачность. Легкая куртка или свитер будут кстати. 🌥️',
@@ -199,14 +199,11 @@ def handle_location(message):
         callback_data=f'weather_location_{latitude}_{longitude}'
     ))
     
-    # Убрал дублирующий reply_markup!
     bot.send_message(
         message.chat.id,
         '📍 Геолокация получена!\nНажмите кнопку для получения прогноза:',
         reply_markup=keyboard
     )
-
-
 
 def plot_weekly_weather(forecast_data):
     """Создание графика прогноза температуры"""
